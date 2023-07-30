@@ -34,9 +34,9 @@ public class Player : MonoBehaviour
         // // velocity
         // rigid2d.velocity = inputvector;
 
-        Vector2 nextVec = Time.fixedDeltaTime * inputvector * speed ;
+        Vector2 nextVec = Time.fixedDeltaTime * inputvector.normalized * speed ;
         // move position
-        rigid2d.MovePosition(rigid2d.position + inputvector);
+        rigid2d.MovePosition(rigid2d.position + nextVec);
     }
 
     private void LateUpdate()

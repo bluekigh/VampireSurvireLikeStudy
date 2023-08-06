@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Enemy : MonoBehaviour
 {
@@ -14,6 +15,25 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rigd;
 
     private SpriteRenderer spriter;
+
+    private IObjectPool<Enemy> _managedPool;
+
+    public void setMenagedPool(IObjectPool<Enemy> pool)
+    {
+        _managedPool = pool;
+    }
+
+    public void Dead()
+    {
+        _managedPool.Release(this);
+    }
+
+    public void deadtimer()
+    {
+        Invoke("Dead",10);
+    }
+    
+    
 
     private void Awake()
     {

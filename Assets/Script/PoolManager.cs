@@ -49,24 +49,6 @@ public class PoolManager : MonoBehaviour
     }
     
     
-    public GameObject Get2(int index)
-    {
-        GameObject select = null;
-        foreach (var VARIABLE in pools[index])
-        {
-            if (!VARIABLE.activeSelf)
-            {
-                select = VARIABLE;
-                select.SetActive(true);
-                return select;
-            }
-        }
-       
-            select = Instantiate(prefabs[index], transform);
-            pools[index].Add(select);
-        
-        
-        return select;
-    }
+    
     
 }
